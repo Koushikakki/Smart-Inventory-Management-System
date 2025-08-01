@@ -1,15 +1,14 @@
-export interface Supplier {
-    id : string ;
-    name : string ;
-    email ?: string ;
-    phone ?: string ; 
-}
+export type Supplier = {
+  id: string;
+  name: string;
+  email?: string;
+  phone?: string;
+};
 
-
-export interface Product {
-    id : string;
-    name : string;
-    category : string;
-    stock : number;
-    supplierId ?: string;
-}
+export type Product = {
+  id: string;
+  name: string;
+  category: string;
+  stock: number;
+  supplierId?: string;
+};
