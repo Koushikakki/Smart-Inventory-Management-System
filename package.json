@@ -1,0 +1,21 @@
+{
+  "name": "smart-inventory-managment-system",
+  "version": "1.0.0",
+  "description": "This is a lightweight, terminal-based inventory management system designed for a small electronics retail business. It helps manage products, suppliers, promotions, and stock levels — all through simple CLI inputs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Koushikakki/Smart-Inventory-Management-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Koushikakki/Smart-Inventory-Management-System/issues"
+  },
+  "homepage": "https://github.com/Koushikakki/Smart-Inventory-Management-System#readme"
+}
