@@ -40,4 +40,12 @@ Stock: ${product.stock}`);
 
 
 
-    
+export function restockProduct(name: string, quantity: number): void {
+  const product = products.find((p) => p.name.toLowerCase() === name.toLowerCase());
+  if (!product) {
+    console.log(` Product '${name}' not found.`);
+    return;
+  }
+  product.stock += quantity;
+  console.log(` Restocked ${quantity} units of '${product.name}'. New stock: ${product.stock}`);
+}
