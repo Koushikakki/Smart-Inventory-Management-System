@@ -1,46 +1,40 @@
-import { Supplier } from '../Types/types'; 
-import { suppliers,products } from '../Data/data';
-import { v4 as uuidv4 } from 'uuid';
-
+import { suppliers } from "../Data/data";
+import { Supplier } from "../Types/types";
+import { findSupplierByName } from "../utils/utils";
 
 export function addSupplier(name: string, email?: string, phone?: string): void {
-  const supplier: Supplier = {
-    id: uuidv4(),
-    name,
-    email,
-    phone,
-  };
-  suppliers.push(supplier);
-  console.log(` Supplier '${name}' added.`);
-}
-
-
-
-export function listSuppliers(): void {
-  console.log(`\n Suppliers:`);
-  suppliers.forEach((s) =>
-    console.log(`- ${s.name}${s.email ? ` | Email: ${s.email}` : ''}${s.phone ? ` | Phone: ${s.phone}` : ''}`));
-
-  
-}
-
-
-
-export function showSupplierDetails(name: string): void {
-  const matchingSuppliers = suppliers.filter(s =>
-    s.name.toLowerCase().includes(name.toLowerCase())
-  );
-
-  if (matchingSuppliers.length === 0) {
-    console.log(` No supplier found matching '${name}'.`);
+  const existing = findSupplierByName(suppliers, name);
+  if (existing) {
+    console.log(" Supplier already exists.");
     return;
   }
+  const newSupplier: Supplier = { name, email, phone };
+  suppliers.push(newSupplier);
+  console.log(`Supplier '${name}' added.`);
+}
 
-  console.log(`\n Matching Supplier(s):`);
-  matchingSuppliers.forEach(s => {
-    console.log(`\nID: ${s.id}
-Name: ${s.name}
-${s.email ? `Email: ${s.email}` : ''}
-${s.phone ? `Phone: ${s.phone}` : ''}`);
+export function listSuppliers(): void {
+  if (suppliers.length === 0) {
+    console.log(" No suppliers available.");
+    return;
+  }
+  console.log("Supplier List:");
+  suppliers.forEach((supplier, index) => {
+    console.log(
+      `${index + 1}. ${supplier.name}` +
+      `${supplier.email ? ` - Email: ${supplier.email}` : ""}` +
+      `${supplier.phone ? ` - Phone: ${supplier.phone}` : ""}`
+    );
   });
+}
+
+export function showSupplierDetails(name: string): void {
+  const supplier = findSupplierByName(suppliers, name);
+  if (!supplier) {
+    console.log(" Supplier not found.");
+    return;
+  }
+  console.log(`Details for '${supplier.name}':`);
+  if (supplier.email) console.log(`Email: ${supplier.email}`);
+  if (supplier.phone) console.log(`Phone: ${supplier.phone}`);
 }
