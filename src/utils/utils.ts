@@ -2,12 +2,12 @@ import { Product } from "../Types/types";
 import { Supplier } from "../Types/types";
 
 export function findProductByName(products: Product[], name: string): Product | undefined{
-  return products.find(p => p.name.toLowerCase() === name.toLowerCase());
+  return products.find(productname => productname.name.toLowerCase() === name.toLowerCase());
 }
 
 
 export function findSupplierByName(suppliers: Supplier[], name: string): Supplier | undefined {
-  return suppliers.find(s => s.name.toLowerCase() === name.toLowerCase());
+  return suppliers.find(suppliername => suppliername.name.toLowerCase() === name.toLowerCase());
 }
 
 export function isValidDateFormat(endDate: string): boolean {
